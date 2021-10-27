@@ -37,3 +37,11 @@ jobs:
         git add build/*
         git commit -m "add build files"
         git push origin master
+        
+    ######## OPTIONAL DEPLOYMENT POC
+    - name: Surge deployment
+      run: | 
+        npm install -g surge
+        surge "https://poc-react-webapp.surge.sh" --token {{secrets.SURGE_TOKEN}}
+
+
