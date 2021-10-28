@@ -52,6 +52,4 @@ jobs:
       run: npm install -g surge
       
     - name: Surge deployment
-      run: surge ./build http://annoyed-chin.surge.sh/ --token {{secrets.NEW_SURGE_TOKEN}}
-
-
+      run: surge ./build http://annoyed-chin.surge.sh/ --token 8eaf29534611b3a25cc37f2e9b0ab13f
