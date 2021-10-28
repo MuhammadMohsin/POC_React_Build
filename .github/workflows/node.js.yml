@@ -35,7 +35,7 @@ jobs:
     - name: commit
       run: |
         # Stage the file, commit and push
-        git add build/*
+        git add .
         git commit -m "add build files"
         git push origin master
         
