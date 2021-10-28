@@ -42,6 +42,6 @@ jobs:
     - name: Surge deployment
       run: | 
         npm install -g surge
-        surge ./build "https://poc-react-webapp.surge.sh" --token {{secrets.SURGE_TOKEN}}
+        surge ./build "https://poc-react-webapp.surge.sh" --token {{secrets.NEW_SURGE_TOKEN}}
 
 
