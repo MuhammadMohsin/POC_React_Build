@@ -20,20 +20,14 @@ jobs:
       with:
         node-version: 12.x
         cache: 'npm'
-    - run: echo "Running npm install"
     - run: npm install
-    - run: echo "Starting build creation"
-    
     - run: npm run build --if-present
-    - run: echo "Build created successfully!"
     
-    - name: check for changes
+    - name: check for changes to commit
       run: |
         if git diff --exit-code; then
-          #echo "::set-env name=changes_exist::false"
           echo "changes_exist=false" >> $GITHUB_ENV
         else
-          #echo "::set-env name=changes_exist::true"
           echo "changes_exist=true" >> $GITHUB_ENV
         fi
         
@@ -47,9 +41,12 @@ jobs:
         git commit -m "add build files"
         git push origin master
         
-    ######## OPTIONAL DEPLOYMENT POC
+    ################ OPTIONAL DEPLOYMENT POC ################
     - name: Surge Installation
       run: npm install -g surge
       
     - name: Surge deployment
-      run: surge ./build http://annoyed-chin.surge.sh/ --token ${{ secrets.NEW_SURGE_TOKEN }}
+      run: |
+        surge ./build http://webui-poc-react.surge.sh/ --token ${{ secrets.SURGE_TOKEN }}
+        echo "Please visit http://webui-poc-react.surge.sh/ to test fresh update"
+    #########################################################
