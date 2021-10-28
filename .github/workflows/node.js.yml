@@ -23,18 +23,24 @@ jobs:
     - run: echo "Running npm install"
     - run: npm install
     - run: echo "Starting build creation"
-    # - run: rm -rf ./build
+    
     - run: npm run build --if-present
     - run: echo "Build created successfully!"
     
-    - name: setup git config
+    - name: check for changes
+      run: |
+        if git diff --exit-code; then
+          echo "::set-env name=changes_exist::false"
+        else
+          echo "::set-env name=changes_exist::true"
+        fi
+        
+    - name: Commit and Push Only if file updated
+      if: env.changes_exist == 'true'
       run: |
         git config user.name "GitHub Actions Bot"
         git config user.email "<>"
-
-    - name: commit
-      run: |
-        # Stage the file, commit and push
+      
         git add .
         git commit -m "add build files"
         git push origin master
