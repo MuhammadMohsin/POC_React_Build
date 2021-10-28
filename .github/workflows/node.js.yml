@@ -39,9 +39,10 @@ jobs:
         git push origin master
         
     ######## OPTIONAL DEPLOYMENT POC
+    - name: Surge Installation
+      run: npm install -g surge
+      
     - name: Surge deployment
-      run: | 
-        npm install -g surge
-        surge ./build "https://poc-react-webapp.surge.sh" --token {{secrets.NEW_SURGE_TOKEN}}
+      run: surge ./build "https://poc-react-webapp.surge.sh" --token {{ secrets.SURGE_TOKEN }}
 
 
