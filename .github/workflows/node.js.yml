@@ -23,7 +23,7 @@ jobs:
     - run: echo "Running npm install"
     - run: npm install
     - run: echo "Starting build creation"
-    - run: rm -rf ./build
+    # - run: rm -rf ./build
     - run: npm run build --if-present
     - run: echo "Build created successfully!"
     
@@ -44,6 +44,6 @@ jobs:
       run: npm install -g surge
       
     - name: Surge deployment
-      run: surge ./build https://annoyed-chin.surge.sh/ --token {{ secrets.NEW_SURGE_TOKEN }}
+      run: surge ./build http://annoyed-chin.surge.sh/ --token {{secrets.NEW_SURGE_TOKEN}}
 
 
