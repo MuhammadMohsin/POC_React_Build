@@ -50,7 +50,7 @@ jobs:
         destination_repo: 'MuhammadMohsin/POC_REACT'
         user_email: 'mmohsinkhalid@outlook.com'
         user_name: 'MuhammadMohsin'
-        commit_message: 'Build Success'
+        commit_message: 'Build Success Message'
         
     ################ OPTIONAL DEPLOYMENT POC ################
     - name: Surge Installation
