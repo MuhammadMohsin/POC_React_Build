@@ -46,6 +46,7 @@ jobs:
       env:
         API_TOKEN_GITHUB: ${{ secrets.API_TOKEN_GITHUB }}
       with:
+        github_server: 'github.com'
         source_file: 'build'
         destination_repo: 'MuhammadMohsin/POC_REACT'
         user_email: 'mmohsinkhalid@outlook.com'
