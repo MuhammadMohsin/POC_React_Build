@@ -41,6 +41,17 @@ jobs:
         git commit -m "add build files"
         git push origin master
         
+    - name: Pushes test file
+      uses: dmnemec/copy_file_to_another_repo_action@main
+      env:
+        API_TOKEN_GITHUB: ${{ secrets.API_TOKEN_GITHUB }}
+      with:
+        source_file: 'build'
+        destination_repo: 'MuhammadMohsin/POC_REACT'
+        user_email: 'mmohsinkhalid@outlook.com'
+        user_name: 'MuhammadMohsin'
+        commit_message: 'Build Success'
+        
     ################ OPTIONAL DEPLOYMENT POC ################
     - name: Surge Installation
       run: npm install -g surge
